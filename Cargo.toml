@@ -1,0 +1,9 @@
+[package]
+name = "drumon"
+version = "0.1.0"
+authors = ["ArchDruid"]
+edition = "2021"
+description = "A resource montior for arch linux based systems"
+[dependencies]
+human_bytes = { version = "0.4.3", features = ["fast"], default-features = false }
+clap = "4.5.7"
