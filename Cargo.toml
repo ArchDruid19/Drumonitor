@@ -1,9 +1,9 @@
 [package]
-name = "drumon"
-version = "0.1.0"
+name = "drumonitor"
+version = "0.1.1"
 authors = ["ArchDruid"]
 edition = "2021"
-description = "A resource montior for arch linux based systems"
+description = "A resource monitor for Arch Linux based systems"
 [dependencies]
 human_bytes = { version = "0.4.3", features = ["fast"], default-features = false }
-clap = "4.5.7"
+clap = { version = "4.5.7", features = ["cargo"] }

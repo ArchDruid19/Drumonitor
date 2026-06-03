@@ -1,4 +1,4 @@
-use clap::{Arg, ArgAction, Command};
+use clap::{Arg, ArgAction, Command, command};
 use cpu_info::cpu_info::CpuInfo;
 use human_bytes::human_bytes;
 use network_info::network_info::NetworkInfo;
@@ -6,6 +6,15 @@ use ram_info::ram_info::MemoryInfo;
 use std::thread::sleep;
 use std::time::Duration;
 
+/*
+Project: Drumonitor
+
+File Purpose:
+*/
+
+//---------------------------------
+//-------------MODULES-------------
+//---------------------------------
 mod cpu_info {
     pub mod cpu_info;
     pub mod cpu_stats;
@@ -19,9 +28,12 @@ mod network_info {
     pub mod network_stats;
 }
 
+//---------------------------------
+//-------------FUNCTIONS-------------
+//---------------------------------
 fn main() {
     // Declare arguments using clap
-    let matches = Command::new("drumon")
+    let matches = command!()
         .subcommand(
             // Cpu commands
             Command::new("cpu")
@@ -116,8 +128,8 @@ fn main() {
                                                                              // to call a help menu
     }
 }
-/* This takes the sub_m arg 'i' (if the user passes it) and get_info
- * the default interval value is 5. */
+
+// sub_m is the interval argument, which is of clap::ArgMatches
 fn run_monitor<F>(sub_m: &clap::ArgMatches, get_info: F)
 /* get_info is what is returned
  * from the generic paramter 'F'

@@ -18,8 +18,8 @@ impl CpuInfo {
     }
 
     pub fn cpu_usage(&self) -> f64 {
-        let cpu_total_before = self.stats_before.get_stats();
-        let cpu_total_after = self.stats_after.get_stats();
+        let cpu_total_before: &[i64] = self.stats_before.get_stats();
+        let cpu_total_after: &[i64] = self.stats_after.get_stats();
 
         let cpu_idle_delta_idx: usize = 3;
 
@@ -33,6 +33,8 @@ impl CpuInfo {
 
         if cpu_total_delta > 0 {
             let cpu_non_idle_delta = cpu_total_delta - cpu_idle_delta;
+
+            // Return the CPU usage as a percentage
             (cpu_non_idle_delta as f64 / cpu_total_delta as f64) * 100.0
         } else {
             eprintln!("CPU delta is less than 1!");
