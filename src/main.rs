@@ -1,5 +1,8 @@
 use clap::{Arg, ArgAction, Command};
+use cpu_info::cpu_info::CpuInfo;
 use human_bytes::human_bytes;
+use network_info::network_info::NetworkInfo;
+use ram_info::ram_info::MemoryInfo;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -15,10 +18,6 @@ mod network_info {
     pub mod network_info;
     pub mod network_stats;
 }
-
-use cpu_info::cpu_info::CpuInfo;
-use network_info::network_info::NetworkInfo;
-use ram_info::ram_info::MemoryInfo;
 
 fn main() {
     // Declare arguments using clap

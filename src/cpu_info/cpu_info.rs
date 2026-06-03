@@ -21,13 +21,15 @@ impl CpuInfo {
         let cpu_total_before = self.stats_before.get_stats();
         let cpu_total_after = self.stats_after.get_stats();
 
+        let cpu_idle_delta_idx: usize = 3;
+
         let cpu_total_delta: i64 = cpu_total_after
             .iter()
             .zip(cpu_total_before)
             .map(|(a, b)| a - b)
             .sum();
 
-        let cpu_idle_delta = cpu_total_after[3] - cpu_total_before[3];
+        let cpu_idle_delta = cpu_total_after[cpu_idle_delta_idx] - cpu_total_before[cpu_idle_delta_idx];
 
         if cpu_total_delta > 0 {
             let cpu_non_idle_delta = cpu_total_delta - cpu_idle_delta;
